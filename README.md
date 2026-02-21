@@ -67,20 +67,30 @@ npm install
 
 ### 3. Set up environment variables
 
-Create a `.env` file in the root directory:
-
-```env
-DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME"
+```bash
+cp .env.example .env
 ```
 
-### 4. Run Prisma migrations
+Then open `.env` and update `DATABASE_URL` with your PostgreSQL credentials:
+
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/your_db_name?schema=public"
+```
+
+### 4. Install dependencies & generate Prisma client
+
+```bash
+npm install
+# prisma generate runs automatically via postinstall script
+```
+
+### 5. Run Prisma migrations
 
 ```bash
 npx prisma migrate dev --name init
-npx prisma generate
 ```
 
-### 5. Start the development server
+### 6. Start the development server
 
 ```bash
 npm run dev
